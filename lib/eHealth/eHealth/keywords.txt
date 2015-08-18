@@ -1,0 +1,48 @@
+#######################################
+# Syntax Coloring Map e-Health
+#######################################
+
+#######################################
+# Datatypes (KEYWORD3)
+#######################################
+
+eHealth	KEYWORD3
+eHealthDisplay	KEYWORD3
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+getTemperature	KEYWORD2
+getOxygenSaturation	KEYWORD2
+getBPM	KEYWORD2
+getSkinConductance	KEYWORD2
+getSkinResistance	KEYWORD2
+getSkinConductanceVoltage	KEYWORD2
+getECG	KEYWORD2
+getBodyPosition	KEYWORD2
+getSystolicPressure	KEYWORD2
+getDiastolicPressure	KEYWORD2
+getAirFlow	KEYWORD2
+version	KEYWORD2
+initBloodPressureSensor	KEYWORD2
+initPositionSensor	KEYWORD2
+airFlowWave	KEYWORD2
+initPulsioximeter	KEYWORD2
+readPulsioximeter	KEYWORD2
+init	KEYWORD2
+initValuesScreen	KEYWORD2
+printValuesScreen	KEYWORD2
+initAirFlowScreen	KEYWORD2
+printAirFlowScreen	KEYWORD2
+initECGScreen	KEYWORD2
+printECGScreen	KEYWORD2
+getGlucometerLength	KEYWORD2
+glucoseDataVector	KEYWORD2
+numberToMonth	KEYWORD2
+glucose	KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
