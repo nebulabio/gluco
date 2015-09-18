@@ -12,6 +12,10 @@ Arduino and e-Health shield working together.
 
 Required hardware:
 
+- [[https://www.arduino.cc/en/Main/ArduinoBoardUno][Arduino Uno]] (others will probably work, but I used the Uno)
+- [[https://www.cooking-hacks.com/documentation/tutorials/ehealth-v1-biometric-sensor-platform-arduino-raspberry-pi-medical][e-Health Shield]]
+- [[https://www.cooking-hacks.com/glucometer-sensor-ehealth-medical][Glucometer sensor]]
+
 ** Build
    
    I built this without using the Arduino IDE on Linux Mint, so the
@@ -53,6 +57,8 @@ Required hardware:
     Version 0.1 is a workable glucometer. It will accurately report
     blood sugar levels, and it will be easy to set up. It might not
     look like the prettiest thing, but it will get the job done.
+
+    It will be fully integrated with [[http://tidepool.org/][Tidepool]] and [[http://www.nightscout.info/][Nightscout]].
 
     This will be hosted on the Arduino an e-Health shield. It will be
     pre-package-able, meaning I could make one and pack it up into a
