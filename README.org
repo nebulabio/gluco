@@ -1,0 +1,94 @@
+#+title: Gluco - an open source glucometer
+#+author: Ben Sima <bensima@gmail.com>
+
+*For research purposes only.* Currently a work in progress.
+
+Gluco is an open hardware and software project. With it, you can
+create your own fully-featured glucometer.
+
+The microcontroller logic is hosted on [[https://www.arduino.cc][Arduino Uno]] and an [[https://www.cooking-hacks.com/documentation/tutorials/ehealth-v1-biometric-sensor-platform-arduino-raspberry-pi-medical][e-Health]]
+shield right now. The code here should be all you need to get the
+Arduino and e-Health shield working together.
+
+Required hardware:
+
+** Build
+   
+   I built this without using the Arduino IDE on Linux Mint, so the
+   build instructions reflect that. This only works on the Arduino Uno.
+   
+   You need [[https://github.com/sudar/Arduino-Makefile][Arduino Makefile]], the Arduino toolchain, and pySerial.
+   
+   #+BEGIN_SRC sh
+    sudo apt-get install arduino arduino-mk
+    pip install pyserial
+   #+END_SRC
+   
+   Connect your Arduino to a USB port and get ownership of the port:
+   
+   #+BEGIN_SRC sh
+    sudo chown $USER /dev/ttyACM0
+   #+END_SRC
+
+   The Arduino code is in the =gluco= directory:
+
+   #+BEGIN_SRC sh
+    cd gluco
+   #+END_SRC
+   
+   To build and upload the code to your Arduino, all you need to do
+   is:
+   
+   #+BEGIN_SRC sh
+    make -k upload
+   #+END_SRC
+   
+   Or [[http://www.emacswiki.org/emacs/ArduinoSupport][in emacs with Arduino support]]: =C-C . c= will compile the code,
+   =C-c . U= will upload it to the Arduino.
+
+** Roadmap
+
+*** v0.1
+    
+    Version 0.1 is a workable glucometer. It will accurately report
+    blood sugar levels, and it will be easy to set up. It might not
+    look like the prettiest thing, but it will get the job done.
+
+    This will be hosted on the Arduino an e-Health shield. It will be
+    pre-package-able, meaning I could make one and pack it up into a
+    small box, give it to someone else, tell them to download the
+    software, and it would just work.
+
+*** v0.5
+
+    Version 0.5 will take much longer to release - I will do as much
+    custom hardware design as I need to get off of the e-Health shield
+    and an off-the-shelf glucometer. Instead, perhaps I'll make a
+    sheild that has the glucometer built-in. This would also allow me
+    to create a casing for the entire thing, and make it very sleek.
+
+*** v1.0
+
+    Between v0.5 and v1.0, a ton of work will go into creating a solid
+    platform. It will be re-implemented in Rust with [[https://github.com/hackndev/zinc][Zinc]], thus giving
+    the entire hardware stack compiler-enabled safety:
+
+    #+BEGIN_QUOTE
+    In addition to /software safety/, zinc provides /hardware safety/ with
+    Platform Tree specification; you define the hardware configuration
+    right in the code in simple key-value DSL and compiler verifies
+    that all hardware is configured properly
+    #+END_QUOTE
+
+    How cool is that?! I plan for version 1.0 to be done by summer
+    of 2016.
+
+*** v1.5
+    
+    Version 1.0 will be big, but it will also enable a really powerful
+    platform. Within 6 months after 1.0 is released, I could have a
+    continuous glucometer prototyped. That's what I'm *really* excited
+    about: an open source continuous glucose meter.
+
+
+    
