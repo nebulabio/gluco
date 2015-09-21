@@ -36,6 +36,12 @@
 #include "Arduino.h"
 #include <avr/pgmspace.h> 
 
+// required to compile eHealthDisplay.h
+// see: https://ainiazmi88.wordpress.com/2015/03/19/error-compiling-ehealthdisplay-library/
+#ifndef prog_uint8_t
+#define prog_uint8_t const uint8_t
+#endif
+
 // Library interface description
 class eHealthDisplayClass {
 	

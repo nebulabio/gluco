@@ -1,0 +1,3 @@
+[submodule "gluco/Arduino-Makefile"]
+	path = gluco/Arduino-Makefile
+	url = git@github.com:WeAreLeka/Arduino-Makefile.git

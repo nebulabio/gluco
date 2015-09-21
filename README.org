@@ -19,12 +19,13 @@ Required hardware:
 ** Build
    
    I built this without using the Arduino IDE on Linux Mint, so the
-   build instructions reflect that. This only works on the Arduino Uno.
+   build instructions reflect that. This only works on the Arduino Uno
+   (as far as I know).
    
-   You need [[https://github.com/sudar/Arduino-Makefile][Arduino Makefile]], the Arduino toolchain, and pySerial.
+   You need the Arduino toolchain and pySerial:
    
    #+BEGIN_SRC sh
-    sudo apt-get install arduino arduino-mk
+    sudo apt-get install arduino
     pip install pyserial
    #+END_SRC
    
@@ -47,8 +48,8 @@ Required hardware:
     make -k upload
    #+END_SRC
    
-   Or [[http://www.emacswiki.org/emacs/ArduinoSupport][in emacs with Arduino support]]: =C-C . c= will compile the code,
-   =C-c . U= will upload it to the Arduino.
+   Or [[http://www.emacswiki.org/emacs/ArduinoSupport][in emacs with Arduino support]], compile and upload in one step
+   with =M-x compile RET make -k upload=.
 
 ** Roadmap
 
