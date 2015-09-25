@@ -1,0 +1,8 @@
+[package]
+name = "gluco"
+version = "0.1.0"
+authors = ["Ben Sima <bensima@gmail.com>"]
+
+[dependencies]
+chrono = "0.2"
+serial = "*"

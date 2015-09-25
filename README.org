@@ -17,39 +17,48 @@ Required hardware:
 - [[https://www.cooking-hacks.com/glucometer-sensor-ehealth-medical][Glucometer sensor]]
 
 ** Build
-   
-   I built this without using the Arduino IDE on Linux Mint, so the
-   build instructions reflect that. This only works on the Arduino Uno
-   (as far as I know).
-   
-   You need the Arduino toolchain and pySerial:
-   
-   #+BEGIN_SRC sh
+
+*** Arduino   
+    
+    I built this without using the Arduino IDE on Linux Mint, so the
+    build instructions reflect that. This only works on the Arduino Uno
+    (as far as I know).
+    
+    You need the Arduino toolchain and pySerial:
+    
+    #+BEGIN_SRC sh
     sudo apt-get install arduino
     pip install pyserial
-   #+END_SRC
-   
-   Connect your Arduino to a USB port and get ownership of the port:
-   
-   #+BEGIN_SRC sh
+    #+END_SRC
+    
+    Connect your Arduino to a USB port and get ownership of the port:
+    
+    #+BEGIN_SRC sh
     sudo chown $USER /dev/ttyACM0
-   #+END_SRC
-
-   The Arduino code is in the =gluco= directory:
-
-   #+BEGIN_SRC sh
+    #+END_SRC
+    
+    The Arduino code is in the =gluco= directory:
+    
+    #+BEGIN_SRC sh
     cd gluco
-   #+END_SRC
-   
-   To build and upload the code to your Arduino, all you need to do
-   is:
-   
-   #+BEGIN_SRC sh
+    #+END_SRC
+    
+    To build and upload the code to your Arduino, all you need to do
+    is:
+    
+    #+BEGIN_SRC sh
     make -k upload
-   #+END_SRC
+    #+END_SRC
+    
+    Or [[http://www.emacswiki.org/emacs/ArduinoSupport][in emacs with Arduino support]], compile and upload in one step
+    with =M-x compile RET make -k upload=.
+
+*** Driver
    
-   Or [[http://www.emacswiki.org/emacs/ArduinoSupport][in emacs with Arduino support]], compile and upload in one step
-   with =M-x compile RET make -k upload=.
+    The driver is a [[https://www.rust-lang.org][Rust]] program that reads the data from the Arduino,
+    interprets it, and relays it to the desired web services. Follow
+    the Rust documentation to install =cargo= and then do the normal
+    =cargo build= to create an executable.
 
 ** Roadmap
 
