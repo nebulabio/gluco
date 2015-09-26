@@ -8,14 +8,12 @@
 /// full advantage of the clever Rust compiler.
 
 extern crate chrono;
+extern crate serial;
+
 use chrono::datetime::DateTime;
 use chrono::offset::utc::UTC;
-
-extern crate serial;
-use serial::SerialPort;
-
+use serial::prelude::*;
 use std::path::Path;
-
 
 /// The `Measurement` struct represents every Gluco measurement.
 ///
@@ -47,23 +45,18 @@ impl Measurement {
 /// Represents all the measurements from the glucometer sensor as a
 /// vector of `Measurement`s and includes other important info, such
 /// as the serial port to connect to.
-struct App {
+struct App<'a> {
     measurements: Vec<Measurement>,
-    port: SerialPort,
+    path:         &'a Path,
 }
 
 fn main() {
-    let device_path: &Path = Path::new("/dev/ttyACM0");
+    let mut readings: Vec<Measurement> = Vec::new();
 
-    let device: SerialPort;
-    let mut readings: Vec<Measurement>;
+    let app: App = App { 
+        measurements: readings,
+        path: Path::new("/dev/ttyACM0")
+    };
 
-    let app: App = App { measurements: readings, port: device };
-
-    for conn in app.port.open(&device) {
-        match conn {
-            Err(e) => panic!("{}", e),
-            Ok(conn) => println!("Got connecton: {}", conn),
-        }
-    }
+    serial::open(app.path).unwrap();
 }

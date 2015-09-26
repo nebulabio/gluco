@@ -5,4 +5,4 @@ authors = ["Ben Sima <bensima@gmail.com>"]
 
 [dependencies]
 chrono = "0.2"
-serial = "*"
+serial = "0.2.0"
