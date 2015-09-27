@@ -9,11 +9,15 @@
 
 extern crate chrono;
 extern crate serial;
+extern crate time;
 
+use std::path::Path;
+
+use time::Duration;
 use chrono::datetime::DateTime;
 use chrono::offset::utc::UTC;
+
 use serial::prelude::*;
-use std::path::Path;
 
 /// The `Measurement` struct represents every Gluco measurement.
 ///
@@ -40,23 +44,40 @@ impl Measurement {
     }
 }
 
-/// The application state.
-///
-/// Represents all the measurements from the glucometer sensor as a
-/// vector of `Measurement`s and includes other important info, such
-/// as the serial port to connect to.
+
+const SETTINGS: serial::PortSettings = serial::PortSettings {
+    baud_rate:    serial::Baud9600,
+    char_size:    serial::Bits8,
+    parity:       serial::ParityNone,
+    stop_bits:    serial::Stop1,
+    flow_control: serial::FlowNone
+};
+
+
 struct App<'a> {
     measurements: Vec<Measurement>,
-    path:         &'a Path,
+    path:         &'a str,
 }
 
 fn main() {
-    let mut readings: Vec<Measurement> = Vec::new();
-
     let app: App = App { 
-        measurements: readings,
-        path: Path::new("/dev/ttyACM0")
+        measurements: Vec::new(),
+        path:         "/dev/ttyACM0",
     };
 
-    serial::open(app.path).unwrap();
+    let mut gluco = serial::open(app.path).unwrap();
+
+    interact(&mut gluco).unwrap();
+}
+
+fn interact<T: SerialPort>(device: &mut T) -> serial::Result<()> {
+    try!(device.configure(&SETTINGS));
+    try!(device.set_timeout(Duration::seconds(1)));
+
+    let mut buf: Vec<u8> = (0..255).collect();
+
+    println!("reading bytes");
+    try!(device.read(&mut buf[..]));
+
+    Ok(())
 }
