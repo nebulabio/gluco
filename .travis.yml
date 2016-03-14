@@ -1,7 +1,9 @@
 # https://github.com/adafruit/travis-ci-arduino
 language: c
-sudo: false
+sudo: true
 before_install:
+  # Download the Arduino dependencies
+  - sudo apt-get install arduino
   - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
 install:
   - arduino --install-library "Adafruit SleepyDog Library,Adafruit FONA Library"
