@@ -40,7 +40,8 @@ void loop()
           date.concat(eHealth.glucoseDataVector[i].minutes);
 
 
-          Serial.print(eHealth.glucoseDataVector[i].glucose); // measurement
+          // Prints the measurement somewhere?
+          Serial.print(eHealth.glucoseDataVector[i].glucose);
      }
 
      delay(20000);
