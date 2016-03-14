@@ -4,6 +4,11 @@ sudo: true
 before_install:
   # Download the Arduino dependencies
   - sudo apt-get install arduino
+  # Download and install Rust from Hans Jørgen's PPA
+  # https://launchpad.net/~hansjorg/+archive/ubuntu/rust
+  - sudo add-apt-repository ppa:hansjorg/rust
+  - sudo apt-get update
+  - sudo apt-get install rust-stable
   - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
 install:
   - arduino --install-library "Adafruit SleepyDog Library,Adafruit FONA Library"
