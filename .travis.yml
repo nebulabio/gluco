@@ -3,7 +3,7 @@ language: c++
 sudo: true
 before_install:
   # Download the Arduino dependencies
-  - sudo apt-get install arduino
+  - sudo apt-get install arduino arduino-mk
   # Download and install Rust and Cargo via `rustup`
   - curl -sSf https://static.rust-lang.org/rustup.sh | sh
   - echo "CARGO ======" && which cargo
