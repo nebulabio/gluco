@@ -3,12 +3,9 @@ language: c++
 sudo: true
 before_install:
   # Download the Arduino dependencies
-  - sudo apt-get install arduino arduino-mk
+  - sudo apt-get install arduino arduino-mk gcc-avr
   # Download and install Rust and Cargo via `rustup`
   - curl -sSf https://static.rust-lang.org/rustup.sh | sh
-compiler:
-  - clang
-  - gcc
 env:
   - TEST_DIR=gluco
   - TEST_DIR=driver
