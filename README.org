@@ -1,6 +1,8 @@
 #+title: Gluco - an open source glucometer
 #+author: Ben Sima <bensima@gmail.com>
 
+[[https://travis-ci.org/nebulabio/gluco.svg?branch=master]]
+
 *For research purposes only.* Currently a work in progress.
 
 Gluco is an open hardware and software project. With it, you can create your own

@@ -1,0 +1,24 @@
+# https://github.com/adafruit/travis-ci-arduino
+language: c++
+sudo: required
+dist: trusty
+before_install:
+  # Download the Arduino dependencies
+  - sudo apt-get install arduino arduino-mk gcc-avr -y
+  # Download and install Rust and Cargo via `rustup`
+  - curl -sSf https://static.rust-lang.org/rustup.sh | sh
+env:
+  - TEST_DIR=gluco
+  - TEST_DIR=driver
+script:
+  - cd $TEST_DIR && make
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/cd7faa822be9fe30467e
+    on_success: change
+    on_failure: always
+    on_start: never
