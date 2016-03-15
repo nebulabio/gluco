@@ -9,9 +9,8 @@ before_install:
   - sudo add-apt-repository -y ppa:hansjorg/rust
   - sudo apt-get -y update
   - sudo apt-get -y install rust-stable
-  - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
-install:
-  - arduino --install-library "Adafruit SleepyDog Library,Adafruit FONA Library"
+  - echo "CARGO ======" && which cargo
+  - echo "RUST  ======" && which rustc
 compiler:
   - clang
   - gcc
