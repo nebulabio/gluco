@@ -4,7 +4,7 @@ sudo: required
 dist: trusty
 before_install:
   # Download the Arduino dependencies
-  - sudo apt-get install arduino arduino-mk gcc-avr
+  - sudo apt-get install arduino arduino-mk gcc-avr -y
   # Download and install Rust and Cargo via `rustup`
   - curl -sSf https://static.rust-lang.org/rustup.sh | sh
 env:
