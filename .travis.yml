@@ -1,6 +1,7 @@
 # https://github.com/adafruit/travis-ci-arduino
 language: c++
-sudo: true
+sudo: required
+dist: trusty
 before_install:
   # Download the Arduino dependencies
   - sudo apt-get install arduino arduino-mk gcc-avr
