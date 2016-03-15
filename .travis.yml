@@ -6,8 +6,6 @@ before_install:
   - sudo apt-get install arduino arduino-mk
   # Download and install Rust and Cargo via `rustup`
   - curl -sSf https://static.rust-lang.org/rustup.sh | sh
-  - echo "CARGO ======" && which cargo
-  - echo "RUST  ======" && which rustc
 compiler:
   - clang
   - gcc
