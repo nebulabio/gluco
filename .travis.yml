@@ -4,11 +4,11 @@ sudo: true
 before_install:
   # Download the Arduino dependencies
   - sudo apt-get install arduino
-  # Download and install Rust from Hans Jørgen's PPA
+  # Download and install Rust and Cargo from Hans Jørgen's PPA
   # https://launchpad.net/~hansjorg/+archive/ubuntu/rust
   - sudo add-apt-repository -y ppa:hansjorg/rust
   - sudo apt-get -y update
-  - sudo apt-get -y install rust-stable
+  - sudo apt-get -y install rust-stable cargo-stable
   - echo "CARGO ======" && which cargo
   - echo "RUST  ======" && which rustc
 compiler:
