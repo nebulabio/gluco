@@ -1,11 +1,12 @@
 /*
  *  eHealth sensor platform for Arduino and Raspberry from Cooking-hacks.
  *
- *  Description: "The e-Health Sensor Shield allows Arduino and Raspberry Pi 
- *  users to perform biometric and medical applications by using 9 different 
- *  sensors: Pulse and Oxygen in Blood Sensor (SPO2), Airflow Sensor (Breathing),
+ *  Description: "The e-Health Sensor Shield allows Arduino and Raspberry Pi
+ *  users to perform biometric and medical applications by using 9 different
+ *  sensors: Pulse and Oxygen in Blood Sensor (SPO2), Airflow Sensor
+ * (Breathing),
  *  Body Temperature, Electrocardiogram Sensor (ECG), Glucometer, Galvanic Skin
- *  Response Sensor (GSR - Sweating), Blood Pressure (Sphygmomanometer) and 
+ *  Response Sensor (GSR - Sweating), Blood Pressure (Sphygmomanometer) and
  *  Patient Position (Accelerometer)."
  *
  *  Copyright (C) 2012 Libelium Comunicaciones Distribuidas S.L.
@@ -28,7 +29,6 @@
  *  Author: Ahmad Saad & Luis Martín
  */
 
-
 // Ensure this library description is only included once
 #ifndef eHealthClass_h
 #define eHealthClass_h
@@ -36,84 +36,86 @@
 #include "Arduino.h"
 
 // Library interface description
-class eHealthClass {
-	
-	public: 
-  
-	//***************************************************************
-	// Constructor of the class										*
-	//***************************************************************
-  
-		//! Class constructor.
-		eHealthClass(void);
-		 
-	//***************************************************************
-	// Public Methods												*
-	//***************************************************************
-		
-		//! Initializes the position sensor and configure some values.
-		/*!
+class eHealthClass
+{
+
+public:
+  //***************************************************************
+  // Constructor of the class
+  // *
+  //***************************************************************
+
+  //! Class constructor.
+  eHealthClass(void);
+
+  //***************************************************************
+  // Public Methods
+  // *
+  //***************************************************************
+
+  //! Initializes the position sensor and configure some values.
+  /*!
 		\param void
 		\return void
-		*/	void initPositionSensor(void);
-		 		
-		//! Initializes the BloodPressureSensor sensor and configure some values
-		/*!
+		*/ void initPositionSensor(void);
+
+  //! Initializes the BloodPressureSensor sensor and configure some values
+  /*!
 		\param float parameter with correction value
 		\return void
-		*/	void initBloodPressureSensor(float parameter);
-		
-		//! Initializes the pulsioximeter sensor and configure some values.
-		/*!
+		*/ void initBloodPressureSensor(float parameter);
+
+  //! Initializes the pulsioximeter sensor and configure some values.
+  /*!
 		\param void
 		\return void
-		*/	void initPulsioximeter(void);
-					
-		//! Returns the corporal temperature.
-		/*!
-		\param void
-		\return float : The corporal temperature value.   
-		*/	float getTemperature( void );
-		
-		//! Returns the oxygen saturation in blood in percent.
-		/*!
-		\param void
-		\return int : The oxygen saturation value. Normal values betwen 95-99%  
-		*/	int getOxygenSaturation(void);
+		*/ void initPulsioximeter(void);
 
-		//! Returns the heart beats per minute. 
-		/*!
+  //! Returns the corporal temperature.
+  /*!
 		\param void
-		\return int : The beats per minute. 
-		*/	int getBPM(void);
- 
-		//! Returns the value of skin conductance. 
-		/*!
-		\param void
-		\return float : The skin conductance value.  
-		*/	float getSkinConductance(void);
-		
-		//! Returns the value of skin resistance. 
-		/*!
-		\param void
-		\return float : The skin resistance value.  
-		*/	float getSkinResistance (void);
-		
-		//! Returns the value of skin conductance in voltage. 
-		/*!
-		\param void
-		\return float : The skin conductance value in voltage (0-5v).  
-		*/	float getSkinConductanceVoltage(void);
+		\return float : The corporal temperature value.
+		*/ float getTemperature(void);
 
-		//! Returns an analogic value to represent the Electrocardiography.
-		/*!
+  //! Returns the oxygen saturation in blood in percent.
+  /*!
 		\param void
-		\return float : The analogic value (0-5V).  
-		*/	float getECG(void);
+		\return int : The oxygen saturation value. Normal values betwen 95-99%
+		*/ int getOxygenSaturation(void);
 
-		//! Returns the body position.
-		/*!
-		\param void   
+  //! Returns the heart beats per minute.
+  /*!
+		\param void
+		\return int : The beats per minute.
+		*/ int getBPM(void);
+
+  //! Returns the value of skin conductance.
+  /*!
+		\param void
+		\return float : The skin conductance value.
+		*/ float getSkinConductance(void);
+
+  //! Returns the value of skin resistance.
+  /*!
+		\param void
+		\return float : The skin resistance value.
+		*/ float getSkinResistance(void);
+
+  //! Returns the value of skin conductance in voltage.
+  /*!
+		\param void
+		\return float : The skin conductance value in voltage (0-5v).
+		*/ float getSkinConductanceVoltage(void);
+
+  //! Returns an analogic value to represent the Electrocardiography.
+  /*!
+		\param void
+		\return float : The analogic value (0-5V).
+		*/ float getECG(void);
+
+  //! Returns the body position.
+  /*!
+		\param void
 		\return uint8_t : the position of the pacient.
 		 *		1 == Supine position.
 		 *		2 == Left lateral decubitus.
@@ -121,158 +123,155 @@ class eHealthClass {
 		 *		4 == Prone position.
 		 *		5 == Stand or sit position
 		 */ uint8_t getBodyPosition(void);
-		 
-		//! Returns the  value of the systolic pressure.
-		/*!
-		\param void   
+
+  //! Returns the  value of the systolic pressure.
+  /*!
+		\param void
 		\return int : The systolic pressure.
-		*/	int getSystolicPressure(void);
+		*/ int getSystolicPressure(void);
 
-		//! Returns the  value of the diastolic pressure.
-		/*!
-		\param void   
+  //! Returns the  value of the diastolic pressure.
+  /*!
+		\param void
 		\return int : The diastolic pressure.
-		*/	int getDiastolicPressure(void);
+		*/ int getDiastolicPressure(void);
 
-		//! Returns an analogic value to represent the air flow.
-		/*!
-		\param void   
-		\return int : The value (0-1023) read from the analogic in.  
-		*/	int getAirFlow(void);
+  //! Returns an analogic value to represent the air flow.
+  /*!
+		\param void
+		\return int : The value (0-1023) read from the analogic in.
+		*/ int getAirFlow(void);
 
-		//! Prints the current body position 
-		/*!
-		\param uint8_t position : the current body position.   
-		\return void  
-		*/	void printPosition( uint8_t position );
-		
-		//! It reads a value from pulsioximeter sensor.
-		/*!
+  //! Prints the current body position
+  /*!
+		\param uint8_t position : the current body position.
+		\return void
+		*/ void printPosition(uint8_t position);
+
+  //! It reads a value from pulsioximeter sensor.
+  /*!
 		\param void
 		\return void
-		*/	void readPulsioximeter(void);
+		*/ void readPulsioximeter(void);
 
-		//!  Prints air flow wave form in the serial monitor
-		/*!
-		\param int air : analogic value to print. 
-		\return void 
-		*/	void airFlowWave(int air);
+  //!  Prints air flow wave form in the serial monitor
+  /*!
+		\param int air : analogic value to print.
+		\return void
+		*/ void airFlowWave(int air);
 
-		//!  Read the values stored in the glucometer. 
-		/*!
+  //!  Read the values stored in the glucometer.
+  /*!
 		\param void
 		\return void
-		*/	void readGlucometer(void);
+		*/ void readGlucometer(void);
 
-		//!Returns the number of data stored in the glucometer.
-		/*!
+  //! Returns the number of data stored in the glucometer.
+  /*!
 		\param void
-		\return int : length of data 
-		*/	uint8_t getGlucometerLength(void);
+		\return int : length of data
+		*/ uint8_t getGlucometerLength(void);
 
-		//!  Returns the library version 
-		/*!
+  //!  Returns the library version
+  /*!
 		\param void
-		\return int : The library version. 
-		*/	int version(void);
+		\return int : The library version.
+		*/ int version(void);
 
-		//! Convert month variable from numeric to character.
-		/*!
+  //! Convert month variable from numeric to character.
+  /*!
 		 \param int month in numerical format.
 		 \return String with the month characters (January, February...).
-		 */	String numberToMonth(int month);
+		 */ String numberToMonth(int month);
 
-		//!Struct to store data of the glucometer.
-		struct glucoseData {
-			uint8_t year; 
-			uint8_t month;
-			uint8_t day;
-			uint8_t hour;
-			uint8_t minutes;
-			uint8_t glucose;
-			uint8_t meridian;
-		};
+  //! Struct to store data of the glucometer.
+  struct glucoseData
+  {
+    uint8_t year;
+    uint8_t month;
+    uint8_t day;
+    uint8_t hour;
+    uint8_t minutes;
+    uint8_t glucose;
+    uint8_t meridian;
+  };
 
-		//!Vector to store the glucometer measures and dates.
-		glucoseData glucoseDataVector[8];
+  //! Vector to store the glucometer measures and dates.
+  glucoseData glucoseDataVector[8];
 
-	private:
+private:
+  //***************************************************************
+  // Private Methods
+  // *
+  //***************************************************************
 
-	//***************************************************************
-	// Private Methods												*
-	//***************************************************************
+  //! Initialize the MMA8452 registers
+  void initMMA8452(byte fsr, byte dataRate);
 
-		//! Initialize the MMA8452 registers 
-		void initMMA8452(byte fsr, byte dataRate);
+  //! Sets the MMA8452 to standby mode. It must be in standby to change most
+  //! register settings.
+  void MMA8452Standby();
 
-		//! Sets the MMA8452 to standby mode. It must be in standby to change most register settings.
-		void MMA8452Standby();
-		
-		//! Sets the MMA8452 to active mode. Needs to be in this mode to output data.
-		void MMA8452Active();
+  //! Sets the MMA8452 to active mode. Needs to be in this mode to output data.
+  void MMA8452Active();
 
-		//! Read i registers sequentially, starting at address into the dest byte array
-		void readRegisters(byte address, int i, byte * dest);
+  //! Read i registers sequentially, starting at address into the dest byte
+  //! array
+  void readRegisters(byte address, int i, byte* dest);
 
-		//! Read a single byte from address and return it as a byte.
-		byte readRegister(uint8_t address);
+  //! Read a single byte from address and return it as a byte.
+  byte readRegister(uint8_t address);
 
-		//! Writes a single byte (data) into address.
-		void writeRegister(unsigned char address, unsigned char data);
+  //! Writes a single byte (data) into address.
+  void writeRegister(unsigned char address, unsigned char data);
 
-		//! This function will read the p/l source register and
-		//! print what direction the sensor is now facing. 
-		void portraitLandscapeHandler();
+  //! This function will read the p/l source register and
+  //! print what direction the sensor is now facing.
+  void portraitLandscapeHandler();
 
-		//! Assigns a value depending on body position.
-		void bodyPosition(void);
-		
-		//! Converts from 7 segments to number.
-		uint8_t segToNumber(uint8_t A,
-							uint8_t B,
-							uint8_t C,
-							uint8_t D,
-							uint8_t E,
-							uint8_t F,
-							uint8_t G );
+  //! Assigns a value depending on body position.
+  void bodyPosition(void);
 
+  //! Converts from 7 segments to number.
+  uint8_t segToNumber(uint8_t A, uint8_t B, uint8_t C, uint8_t D, uint8_t E,
+                      uint8_t F, uint8_t G);
 
-	//***************************************************************
-	// Private Variables											*
-	//***************************************************************
+  //***************************************************************
+  // Private Variables
+  // *
+  //***************************************************************
 
-		//! It stores the systolic pressure value
-		int systolic;
+  //! It stores the systolic pressure value
+  int systolic;
 
-		//! It stores the diastolic pressure value
-		int diastolic;
+  //! It stores the diastolic pressure value
+  int diastolic;
 
-		//! It stores the  beats per minute value.
-		int BPM;
-		
-		//! It stores blood oxigen saturation value.
-		int SPO2;
-		
-		//! It stores current body position.
-		uint8_t bodyPos; 
+  //! It stores the  beats per minute value.
+  int BPM;
 
-		//! x/y/z accel register data store here.
-		byte data[6];
+  //! It stores blood oxigen saturation value.
+  int SPO2;
 
-		//! Stores the 12-bit signed value.
-		int accelCount[3];
+  //! It stores current body position.
+  uint8_t bodyPos;
 
-		//! Stores the real accel value in g's.
-		float accel[3];  
+  //! x/y/z accel register data store here.
+  byte data[6];
 
-		//! Stores the body position in vector value. 
-		uint8_t position[];
+  //! Stores the 12-bit signed value.
+  int accelCount[3];
 
-		//!It stores the number of data of the glucometer.
-		uint8_t length;
+  //! Stores the real accel value in g's.
+  float accel[3];
+
+  //! Stores the body position in vector value.
+  uint8_t position[];
+
+  //! It stores the number of data of the glucometer.
+  uint8_t length;
 };
 
 extern eHealthClass eHealth;
 
 #endif
-
