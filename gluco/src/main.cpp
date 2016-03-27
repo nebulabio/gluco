@@ -4,10 +4,15 @@
 void
 setup()
 {
+  Serial.begin(9600);
+  while (!Serial) { ; } // wait for serial port to connect. Needed for native USB port only
+
+  Serial.println("Gluco v0.1");
+  Serial.println("Reading from glucometer...");
   eHealth.readGlucometer();
-  Serial.begin(115200);
   delay(100);
 }
+
 
 void
 loop()
