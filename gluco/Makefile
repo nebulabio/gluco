@@ -4,10 +4,10 @@ ci:
 	PLATFORMIO_CI_SRC=. platformio ci --board=uno
 
 run:
-	platformio run
+	platformio run -vvv
 
 upload:
-	platformio run -v -t upload
+	platformio run -vvv -t upload
 
 monitor:
-	platformio serialports monitor
+	platformio serialports monitor -b 115200
