@@ -4,54 +4,57 @@
 void
 setup()
 {
-  Serial.begin(9600);
-  while (!Serial) { ; } // wait for serial port to connect. Needed for native USB port only
-
-  Serial.println("Gluco v0.1");
-  Serial.println("Reading from glucometer...");
   eHealth.readGlucometer();
+  Serial.begin(115200);
   delay(100);
 }
 
+void loop() {
 
-void
-loop()
-{
-  uint8_t data_length = eHealth.getGlucometerLength();
+  Serial.println("Gluco v0.1");
+  Serial.println("Reporting glucose data.");
 
-  for (int i = 0; i < data_length; i++) {
-    String date = "";
-    int hours = 0;
+  uint8_t numberOfData = eHealth.getGlucometerLength();
+  Serial.print(F("Number of measures : "));
+  Serial.println(numberOfData, DEC);
+  delay(100);
 
+
+  for (int i = 0; i<numberOfData; i++) {
     // The protocol sends data in this order
-    // measurement number, date (YYYY:MM:DD:HH:MM), measurement (mg/dL)
-    Serial.println(i + 1); // measurement number
+    Serial.println(F("=========================================="));
 
-    // Formats the data to YYYY:MM:DD:HH:MM
-    date.concat(eHealth.glucoseDataVector[i].year);
-    date.concat(":");
+    Serial.print(F("Measure number "));
+    Serial.println(i + 1);
 
-    date.concat(eHealth.glucoseDataVector[i].month);
-    date.concat(":");
+    Serial.print(F("Date -> "));
+    Serial.print(eHealth.glucoseDataVector[i].day);
+    Serial.print(F(" of "));
+    Serial.print(eHealth.numberToMonth(eHealth.glucoseDataVector[i].month));
+    Serial.print(F(" of "));
+    Serial.print(2000 + eHealth.glucoseDataVector[i].year);
+    Serial.print(F(" at "));
 
-    date.concat(eHealth.glucoseDataVector[i].day);
-    date.concat(":");
-
-    if (eHealth.glucoseDataVector[i].meridian == 0xBB) {
-      hours += 12;
-    };
     if (eHealth.glucoseDataVector[i].hour < 10) {
-      date.concat("0");
-    };
-    hours += eHealth.glucoseDataVector[i].hour;
-    date.concat(hours);
-    date.concat(":");
+      Serial.print(0); // Only for best representation.
+    }
 
-    date.concat(eHealth.glucoseDataVector[i].minutes);
+    Serial.print(eHealth.glucoseDataVector[i].hour);
+    Serial.print(F(":"));
 
-    // Prints the measurement somewhere?
-    Serial.print("Incoming :: ");
+    if (eHealth.glucoseDataVector[i].minutes < 10) {
+      Serial.print(0);// Only for best representation.
+    }
+    Serial.print(eHealth.glucoseDataVector[i].minutes);
+
+    if (eHealth.glucoseDataVector[i].meridian == 0xBB)
+      Serial.println(F(" pm"));
+    else if (eHealth.glucoseDataVector[i].meridian == 0xAA)
+      Serial.println(F(" am"));
+
+    Serial.print(F("Glucose value : "));
     Serial.print(eHealth.glucoseDataVector[i].glucose);
+    Serial.println(F(" mg/dL"));
   }
 
   delay(20000);
