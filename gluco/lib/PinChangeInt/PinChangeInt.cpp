@@ -20,7 +20,7 @@
 #include "Arduino.h"
 #endif
 #ifndef PinChangeInt_h
-#include <PinChangeInt.h>
+#include "PinChangeInt.h"
 #endif
 
 PCintPort::PCintPin PCintPort::PCintPin::pinDataAlloc[MAX_PIN_CHANGE_PINS];

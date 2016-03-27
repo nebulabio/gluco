@@ -1,4 +1,5 @@
-#include <eHealth.h>
+#include "Arduino.h"
+#include "../lib/eHealth/eHealth.h"
 
 
 void setup()
