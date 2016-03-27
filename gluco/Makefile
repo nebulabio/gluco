@@ -6,5 +6,8 @@ ci:
 run:
 	platformio run
 
+upload:
+	platformio run -v -t upload
+
 monitor:
 	platformio serialports monitor
