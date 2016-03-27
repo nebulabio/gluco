@@ -4,15 +4,17 @@
 void
 setup()
 {
-  eHealth.readGlucometer();
-  Serial.begin(115200);
   delay(100);
 }
 
 void loop() {
 
+  Serial.begin(115200);
+
   Serial.println("Gluco v0.1");
-  Serial.println("Reporting glucose data.");
+  Serial.println("Reading glucometer.");
+
+  eHealth.readGlucometer();
 
   uint8_t numberOfData = eHealth.getGlucometerLength();
   Serial.print(F("Number of measures : "));
@@ -57,5 +59,5 @@ void loop() {
     Serial.println(F(" mg/dL"));
   }
 
-  delay(20000);
+  delay(3000);
 }
