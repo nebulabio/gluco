@@ -11,6 +11,8 @@ before_install:
 env:
   - TEST_DIR=gluco
   - TEST_DIR=driver
+install:
+  - pip install -U platformio
 script:
   - cd $TEST_DIR && make
 notifications:
