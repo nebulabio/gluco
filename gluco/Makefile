@@ -1,7 +1,7 @@
 default: ci
 
 ci:
-	PLATFORMIO_CI_SRC=. platformio ci --board=uno
+	PLATFORMIO_CI_SRC=. platformio ci --board=uno --lib="lib/eHealth/eHealth.h"
 
 run:
 	platformio run -vvv
