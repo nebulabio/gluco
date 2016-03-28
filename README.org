@@ -104,3 +104,7 @@ glucose meter.
 
 
     
+
+
+  #+ATTR_HTML: title="Join the chat at https://gitter.im/nebulabio/gluco"
+  [[https://gitter.im/nebulabio/gluco?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge][file:https://badges.gitter.im/nebulabio/gluco.svg]]
